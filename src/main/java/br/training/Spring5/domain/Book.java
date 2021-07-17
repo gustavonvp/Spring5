@@ -72,4 +72,9 @@ public class Book {
 
     public void setPublisher(Publisher publisher) {
     }
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
 }
+
