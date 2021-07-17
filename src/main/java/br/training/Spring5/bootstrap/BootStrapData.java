@@ -34,7 +34,7 @@ public class BootStrapData implements CommandLineRunner {
 
         publisherRepository.save(publisher);
 
-        System.out.println("Publisher Count: " + publisherRepository.count());
+
 
         Author eric = new Author("Eric" , "Evans");
         Book odd = new Book("Domain Driven Design", "123123213");
@@ -63,6 +63,8 @@ public class BootStrapData implements CommandLineRunner {
 
         System.out.println("Started in Bootstrap");
         System.out.println("Number of Books: " + bookRepository.count());
+        System.out.println("Number of Authors: " + authorRepository.count());
+        System.out.println("Publisher Count: " + publisherRepository.count());
 
 
 
