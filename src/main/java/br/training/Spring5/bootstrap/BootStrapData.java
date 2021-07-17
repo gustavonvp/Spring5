@@ -2,8 +2,10 @@ package br.training.Spring5.bootstrap;
 
 import br.training.Spring5.domain.Author;
 import br.training.Spring5.domain.Book;
+import br.training.Spring5.domain.Publisher;
 import br.training.Spring5.repository.AuthorRepository;
 import br.training.Spring5.repository.BookRepository;
+import br.training.Spring5.repository.PublisherRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +15,26 @@ public class BootStrapData implements CommandLineRunner {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
+    private final PublisherRepository publisherRepository;
 
-    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository) {
+    public BootStrapData(AuthorRepository authorRepository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
 
     @Override
     public void run(String... args) throws Exception{
+
+        Publisher publisher = new Publisher();
+        publisher.setName("SFG Publishing");
+        publisher.setCity("St petersburg");
+        publisher.setState("FL");
+        publisher.setZip("2321456");
+
+        publisherRepository.save(publisher);
+
+        System.out.println("Publisher Count: " + publisherRepository.count());
 
         Author eric = new Author("Eric" , "Evans");
         Book odd = new Book("Domain Driven Design", "123123213");
